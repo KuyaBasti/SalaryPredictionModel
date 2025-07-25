@@ -2,22 +2,6 @@
 
 A comprehensive machine learning project that predicts salaries based on demographic and professional factors. This project implements multiple ML algorithms and provides a user-friendly web interface for salary predictions.
 
-## 📋 Table of Contents
-
-- [Overview](#overview)
-- [Dataset](#dataset)
-- [Features](#features)
-- [Models Implemented](#models-implemented)
-- [Technology Stack](#technology-stack)
-- [Project Structure](#project-structure)
-- [Installation](#installation)
-- [Usage](#usage)
-- [Model Performance](#model-performance)
-- [Web Application](#web-application)
-- [Data Preprocessing](#data-preprocessing)
-- [Contributing](#contributing)
-- [Academic Paper](#academic-paper)
-
 ## 🎯 Overview
 
 This project analyzes salary data across different demographics and job categories to build predictive models. The system uses various machine learning algorithms to predict salaries based on factors such as age, gender, education level, job title, years of experience, country, race, and seniority level.

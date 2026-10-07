@@ -1,0 +1,128 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 604" width="1000" height="604" role="img" aria-label="Salary Prediction Model system overview: the Project.ipynb notebook reads Salary.csv (6,684 rows, 9 columns), groups 129 job titles into 8 categories, one-hot encodes, scales and reduces 29 features to 18 PCA components, trains and compares linear, polynomial, MLP and random forest regressors, and pickles the encoder, the PCA, the 8-tree random forest (best test R² 0.85) and the salary scaler; the Flask app.py loads those four pickles at startup, serves the input form at GET /, and on an HTTP POST of 8 form fields to /predict applies one-hot, PCA, the forest and the inverse salary scaling, then renders results.html with the predicted salary.">
+  <style>
+    .bg{fill:#ffffff}
+    .title{fill:#1f2328;font:600 22px -apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif}
+    .sub{fill:#59636e;font:14px -apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif}
+    .lbl{fill:#1f2328;font:600 14px -apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif}
+    .note{fill:#59636e;font:12px -apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif}
+    .glbl{fill:#59636e;font:600 12px -apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;letter-spacing:.06em}
+    .elbl{fill:#59636e;font:11px -apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif}
+    .edge{stroke:#818b98;stroke-width:1.6;fill:none}
+    .edge-dash{stroke:#818b98;stroke-width:1.6;fill:none;stroke-dasharray:6 4}
+    .arrow{fill:#818b98}
+    .group{fill:none;stroke:#d1d9e0;stroke-width:1.2;stroke-dasharray:4 4}
+    .b-blue{fill:#ddf4ff;stroke:#54aeff;stroke-width:1.5}
+    .b-green{fill:#dafbe1;stroke:#4ac26b;stroke-width:1.5}
+    .b-purple{fill:#fbefff;stroke:#c297ff;stroke-width:1.5}
+    .b-orange{fill:#fff1e5;stroke:#fb8f44;stroke-width:1.5}
+    .b-gray{fill:#f6f8fa;stroke:#d1d9e0;stroke-width:1.5}
+    .mono{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}
+    @media (prefers-color-scheme: dark){
+      .bg{fill:#0d1117}
+      .title,.lbl{fill:#e6edf3}
+      .sub,.note,.glbl,.elbl{fill:#9198a1}
+      .edge,.edge-dash{stroke:#9198a1}
+      .arrow{fill:#9198a1}
+      .group{stroke:#3d444d}
+      .b-blue{fill:#0c2d6b;stroke:#4493f8}
+      .b-green{fill:#0f3b1e;stroke:#3fb950}
+      .b-purple{fill:#2e1a4f;stroke:#ab7df8}
+      .b-orange{fill:#3d1f0a;stroke:#f0883e}
+      .b-gray{fill:#151b23;stroke:#3d444d}
+    }
+  </style>
+  <defs>
+    <marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path class="arrow" d="M0,0 L10,5 L0,10 z"/>
+    </marker>
+  </defs>
+  <rect class="bg" width="1000" height="604" rx="12"/>
+  <text class="title" x="32" y="48">Salary Prediction Model — system overview</text>
+  <text class="sub" x="32" y="74">A notebook trains and compares four regressors offline; Flask serves the best one from pickle files.</text>
+
+  <!-- ===== Offline: Project.ipynb ===== -->
+  <rect class="group" x="22" y="92" width="956" height="108" rx="12"/>
+  <text class="glbl" x="38" y="113">PROJECT.IPYNB · JUPYTER · SCIKIT-LEARN · OFFLINE</text>
+
+  <rect class="b-gray" x="36" y="126" width="164" height="60" rx="10"/>
+  <text class="lbl mono" x="118" y="151" text-anchor="middle">Salary.csv</text>
+  <text class="note" x="118" y="171" text-anchor="middle">6,684 rows · 9 columns</text>
+
+  <rect class="b-green" x="227" y="126" width="164" height="60" rx="10"/>
+  <text class="lbl" x="309" y="151" text-anchor="middle">Clean + encode</text>
+  <text class="note" x="309" y="171" text-anchor="middle">129 titles → 8 groups</text>
+
+  <rect class="b-green" x="418" y="126" width="164" height="60" rx="10"/>
+  <text class="lbl" x="500" y="151" text-anchor="middle">Scale + PCA</text>
+  <text class="note" x="500" y="171" text-anchor="middle">29 → 18 components</text>
+
+  <rect class="b-green" x="609" y="126" width="355" height="60" rx="10"/>
+  <text class="lbl" x="786.5" y="151" text-anchor="middle">Train + compare</text>
+  <text class="note" x="786.5" y="171" text-anchor="middle">linear · poly 1–3 · MLP 64×64 · random forest</text>
+
+  <path class="edge" d="M200,156 H225" marker-end="url(#ah)"/>
+  <path class="edge" d="M391,156 H416" marker-end="url(#ah)"/>
+  <path class="edge" d="M582,156 H607" marker-end="url(#ah)"/>
+
+  <!-- ===== Pickle files in the repo root ===== -->
+  <path class="edge" d="M309,186 V236" marker-end="url(#ah)"/>
+  <path class="edge" d="M500,186 V236" marker-end="url(#ah)"/>
+  <path class="edge" d="M691,186 V236" marker-end="url(#ah)"/>
+  <path class="edge" d="M882,186 V236" marker-end="url(#ah)"/>
+  <text class="elbl" x="317" y="224">pickle.dump</text>
+  <text class="elbl" x="699" y="224">best test R² 0.85</text>
+
+  <rect class="b-gray" x="227" y="240" width="164" height="56" rx="10"/>
+  <text class="lbl mono" x="309" y="263" text-anchor="middle">encoder.pkl</text>
+  <text class="note" x="309" y="282" text-anchor="middle">one-hot of 4 columns</text>
+
+  <rect class="b-gray" x="418" y="240" width="164" height="56" rx="10"/>
+  <text class="lbl mono" x="500" y="263" text-anchor="middle">pca.pkl</text>
+  <text class="note" x="500" y="282" text-anchor="middle">PCA, 18 components</text>
+
+  <rect class="b-gray" x="609" y="240" width="164" height="56" rx="10"/>
+  <text class="lbl mono" x="691" y="263" text-anchor="middle">model.pkl</text>
+  <text class="note" x="691" y="282" text-anchor="middle">random forest, 8 trees</text>
+
+  <rect class="b-gray" x="800" y="240" width="164" height="56" rx="10"/>
+  <text class="lbl mono" x="882" y="263" text-anchor="middle">scaler_y.pkl</text>
+  <text class="note" x="882" y="282" text-anchor="middle">salary StandardScaler</text>
+
+  <path class="edge" d="M309,296 V360" marker-end="url(#ah)"/>
+  <path class="edge" d="M500,296 V360" marker-end="url(#ah)"/>
+  <path class="edge" d="M691,296 V360" marker-end="url(#ah)"/>
+  <path class="edge" d="M882,296 V360" marker-end="url(#ah)"/>
+  <text class="elbl" x="317" y="318">pickle.load at startup</text>
+
+  <!-- ===== Online: Flask app ===== -->
+  <rect class="group" x="22" y="330" width="956" height="108" rx="12"/>
+  <text class="glbl" x="38" y="351">APP.PY · FLASK · PORT 5000</text>
+
+  <rect class="b-blue" x="36" y="364" width="164" height="60" rx="10"/>
+  <text class="lbl mono" x="118" y="389" text-anchor="middle">GET /</text>
+  <text class="note" x="118" y="409" text-anchor="middle">serves the input form</text>
+
+  <rect class="b-blue" x="227" y="364" width="737" height="60" rx="10"/>
+  <text class="lbl mono" x="595.5" y="389" text-anchor="middle">POST /predict</text>
+  <text class="note" x="595.5" y="409" text-anchor="middle">one-hot → PCA → random forest → inverse-scale → salary</text>
+
+  <!-- ===== Browser ===== -->
+  <path class="edge" d="M118,424 V500" marker-end="url(#ah)"/>
+  <text class="elbl" x="126" y="457">HTML page</text>
+  <path class="edge" d="M882,424 V500" marker-end="url(#ah)"/>
+  <text class="elbl" x="874" y="457" text-anchor="end">HTML + predicted salary</text>
+
+  <rect class="group" x="22" y="470" width="956" height="108" rx="12"/>
+  <text class="glbl" x="38" y="491">BROWSER</text>
+
+  <rect class="b-orange" x="36" y="504" width="164" height="60" rx="10"/>
+  <text class="lbl mono" x="118" y="529" text-anchor="middle">index.html</text>
+  <text class="note" x="118" y="549" text-anchor="middle">8-field form + style.css</text>
+
+  <rect class="b-orange" x="800" y="504" width="164" height="60" rx="10"/>
+  <text class="lbl mono" x="882" y="529" text-anchor="middle">results.html</text>
+  <text class="note" x="882" y="549" text-anchor="middle">shows the prediction</text>
+
+  <path class="edge" d="M200,534 H500 V428" marker-end="url(#ah)"/>
+  <text class="elbl" x="350" y="525" text-anchor="middle">HTTP POST · 8 form fields</text>
+</svg>
